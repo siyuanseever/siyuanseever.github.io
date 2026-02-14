@@ -24,6 +24,9 @@
   year={2025},
   url={https://arxiv.org/abs/2503.04344},
   html={https://arxiv.org/abs/2503.04344},
+  code={https://github.com/ShenZhang-Shin/LEDiT},
+  website={https://shenzhang2145.github.io/ledit/},
+  poster={LEDiT_poster.pdf},
   selected={true},
   abstract={Diffusion transformers (DiTs) struggle to generate images at resolutions higher than their training resolutions. The primary obstacle is that the explicit positional encodings(PE), such as RoPE, need extrapolating to unseen positions which degrades performance when the inference resolution differs from training. In this paper, We propose a Length-Extrapolatable Diffusion Transformer~(LEDiT) to overcome this limitation. LEDiT needs no explicit PEs, thereby avoiding PE extrapolation. The key innovation of LEDiT lies in the use of causal attention. We demonstrate that causal attention can implicitly encode global positional information and show that such information facilitates extrapolation. We further introduce a locality enhancement module, which captures fine-grained local information to complement the global coarse-grained position information encoded by causal attention. Experimental results on both conditional and text-to-image generation tasks demonstrate that LEDiT supports up to 4x resolution scaling (e.g., from 256x256 to 512x512), achieving better image quality compared to the state-of-the-art length extrapolation methods. We believe that LEDiT marks a departure from the standard RoPE-based methods and offers a promising insight into length extrapolation.}
 }
