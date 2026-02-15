@@ -41,23 +41,23 @@ ninja.data = [{
             window.location.href = "/blog/2019/intelligent-radar/";
           
         },
+      },{id: "post-world-models-ii-intelligent-electromagnetic-game",
+        
+          title: "World Models (II): Intelligent Electromagnetic Game",
+        
+        description: "In the deep network adversarial detection model, the radar agent relies on the algorithm&#39;s self-learning and improvement capabilities to achieve closed-loop processing from transmit waveform to target detection results.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2019/intelligent-radar-en/";
+          
+        },
       },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
-          description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "projects-project-1",
+            },},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",
           section: "Projects",handler: () => {
