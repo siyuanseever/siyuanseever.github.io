@@ -26,7 +26,3 @@ latest_posts:
 ---
 
 I am a researcher working on algorithms and engineering. This site collects my publications, projects, and notes.
-
-You can update the biography and profile details in this page anytime.
-
-Your social links are configured in `_data/socials.yml`.
