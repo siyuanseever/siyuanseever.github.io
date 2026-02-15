@@ -63,6 +63,17 @@ ninja.data = [{
             window.location.href = "/blog/2019/world-model-1/";
           
         },
+      },{id: "post-world-models-i-the-union-of-memory-perception-prediction-evaluation-and-decision",
+        
+          title: "World Models (I): The Union of Memory, Perception, Prediction, Evaluation, and Decision",
+        
+        description: "Distinguishing &quot;simulating the world&quot; from &quot;understanding the world&quot;, we present a unified, differentiable framework that couples five core modules, and discuss frontiers such as spatial intelligence, abstract learning, and long-term memory.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2019/world-model-1-en/";
+          
+        },
       },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
