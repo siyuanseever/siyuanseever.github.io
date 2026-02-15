@@ -30,18 +30,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-世界模型-一-什么是世界模型",
-        
-          title: "世界模型（一）：什么是世界模型？",
-        
-        description: "区分“模拟世界”与“理解世界”，阐述世界模型五大模块的统一可微框架，并讨论空间智能、抽象学习与长期记忆等前沿方向。",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2026/world-model-1/";
-          
-        },
-      },{id: "post-世界模型-二-智能电磁博弈",
+        },{id: "post-世界模型-二-智能电磁博弈",
         
           title: "世界模型（二）：智能电磁博弈",
         
@@ -61,6 +50,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2019/intelligent-radar-en/";
+          
+        },
+      },{id: "post-世界模型-一-记忆-感知-预测-评估-决策的联合",
+        
+          title: "世界模型（一）：记忆、感知、预测、评估、决策的联合",
+        
+        description: "区分“模拟世界”与“理解世界”，阐述世界模型五大模块的统一可微框架，并讨论空间智能、抽象学习与长期记忆等前沿方向。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2019/world-model-1/";
           
         },
       },{id: "books-the-godfather",
