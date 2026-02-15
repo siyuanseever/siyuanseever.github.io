@@ -156,9 +156,104 @@ by the way, 感觉自己很多思路和出发点都能在 LeCun 老爷子的世�
   V-JEPA 2-AC
 </div>
 
+## 前沿方向：空间智能 (Spatial Intelligence)
+
+斯坦福李飞飞教授团队（World Labs）最近提出的**空间智能 (Spatial Intelligence)** 概念，为世界模型提供了一个极佳的落地场景。
+
+### 1. 视觉 > 语言？
+李飞飞教授指出，相比于语言，**视觉（Vision）** 是更为基础的生物本能。
+> Perception and action became the core loop driving the evolution of intelligence.
+
+从寒武纪大爆发开始，**“感知-行动”** 的循环就是推动智能进化的核心动力。没有语言的动物依然可以通过视觉理解物理世界的规则（如重力、空间遮挡）并做出决策。因此，构建 AGI 的下一步，不应仅仅局限于 LLM 的文本逻辑，更需要让 AI 拥有**“空间认知”** 能力。
+
+### 2. 核心定义
+她定义的空间智能模型需要具备：
+> building frontier models that can perceive, generate, reason, and interact with the 3D world.
+
+这与我上述的“五位一体”定义不谋而合：
+- **Perceive (感知)**：理解 3D 空间结构。
+- **Generate (预测/生成)**：想象未来的可能性。
+- **Reason (评估/记忆)**：进行因果推理。
+- **Interact (决策)**：与物理世界进行交互。
+
+### 3. Marble：从“生成视频”到“生成世界”
+
+<div class="row mt-3">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/world-model/Marble.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+  </div>
+</div>
+<div class="caption">
+  Marble：持久化 3D 世界生成
+</div>
+
+World Labs 推出的首款产品 **Marble**，展示了空间智能与普通视频生成的关键区别：
+- **空间一致性 (Spatial Consistency)**：Sora 等视频生成模型往往存在“空间崩坏”的问题（如人走着走着消失了，或者透视关系错误）。而空间智能要求模型内部有一个显式的、符合物理规律的 3D 表达（Hidden State）。
+- **持久性 (Persistence)**：生成的不是稍纵即逝的像素帧，而是一个可以被存储、编辑、反复进入的**持久化 3D 世界**。
+
+这种能力让 AI 从“画师”变成了“造物主”，能够构建一个可交互的虚拟实验场。
+
+<div class="row mt-3">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/world-model/Long-Context_State-Space_Video_World_Models.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+  </div>
+</div>
+<div class="caption">
+  长时序状态空间视频世界模型
+</div>
+
+当然“生成视频”的路子也有解决思路，那就是引入**长期记忆**，从早期的 ConvLSTM，到最新的 State-Space Model，甚至我之前设计的 Block-wise Recurrent Transformer 都是要做这样的时序一致性推理。
+
+<div class="row mt-3">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/world-model/Long-Context_State-Space_Model_architecture.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+  </div>
+</div>
+<div class="caption">
+  长时序状态空间模型架构
+</div>
+
+---
+
+## 核心特征：像人类一样学习
+
+世界模型与传统深度学习系统的一个显著区别在于**学习路径**。现有的深度学习（DL）效率极低，依赖海量标注数据（Supervised Learning）或试错（RL）。未来十年，AI 的学习方式可能有一些本质的改变：
+
+1. **抽象学习（Abstract Learning）**：像人类医生看 MRI 影像一样，AI 将学会利用“空间常识”和“抽象概念”进行学习，而非死记硬背像素点或者下一个单词。
+2. **持续学习（Continual Learning）**：**从“通用”到“进化”**：我们不应追求一个出厂即巅峰的 AGI，而应追求像人类一样能不断适应环境、持续进化的 **Evolving Intelligence**。  
+3. **时间感知**：现实世界中，时间的流逝是唯一的物理真理。未来的模型（无论是 CNN 还是 Transformer）最终都要加上类似 **LSTM 的 RNN 体质**。如果模型无法从结构上感知到时间，就无法理解熵增与因果，也就无法诞生真正的“硅基生命”。
+
+通过 RNN 类的架构，模型将具备**时序因果的长期记忆**。这不仅能解决“长度外推”问题，更能让 AI 在物理世界的单向时间流中，通过持续的 Training Step 和状态保留，像生物一样积累经验，而非每次重启都被“格式化”。
+
+---
+
+## 实践案例：智能电磁博弈（Intelligent Electromagnetic Game）
+
+为了证明这个框架不仅仅适用于生成视频或玩游戏，我以一个更“硬核”的领域——**雷达与干扰的博弈**为例，展示世界模型是如何在信号处理领域落地的。
+
+<div class="row mt-3">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/world-model/intelligent_electromagnetic_game.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+  </div>
+</div>
+<div class="caption">
+  智能电磁博弈示意
+</div>
+
+在我的硕士论文研究中，构建了一个基于深度强化学习的**雷达智能体**，它完整地体现了世界模型的闭环：
+
+1. **感知与记忆**：利用 **Conv-LSTM** 处理连续脉冲回波，不仅提取当前特征，还保留了历史脉冲的长期记忆。
+2. **决策（Action）**：雷达的发射波形不再是固定的，而是由策略网络 $\pi(o_{t-1})$ 根据历史观测生成的。
+3. **评估（Value）**：构建价值网络 $V(o_t)$，预测当前波形在未来对抗中的长期检测回报。
+4. **博弈（World）**：雷达与干扰机（环境）在**全微分**的链路中进行对抗训练。
+
+在这个模型中，**发射波形（决策）-> 环境干扰（反馈）-> 回波检测（感知/评估）** 形成了一个完整的端到端闭环。
+
+---
+
 ## 结束语
 
-我认为历史上众多璀璨的想法和技术，无论是强化学习、元学习、自回归预测、压缩感知等学习方式，还是 RNN、ResNet、Transformer 等具体的模型结构，亦或者是模型架构或者训练超参数搜索等等技术，它们都有自己的可取之处。我也相信未来 AGI 的构建需要这些智慧结晶，而对于现在极致工业化和商用流行的 LLM 也不会嫌弃，而是会说：“不，你来的正是时候”。
+我认为历史上众多璀璨的想法和技术，无论是强化学习、元学习、自回归预测、压缩感知等学习方式，还是 RNN、ResNet、Transformer 等具体的模型结构，亦或者是模型架构或者训练超参数搜索等等技术，它们都有自己的可取之处。我也相信未来 AGI 的构建需要这些智慧结晶，而对于现在极致工业化和商用流行的 LLM 也不会嫌弃，它们都是构成这个宏大“世界模型”拼图的一部分。
 
 ---
 
