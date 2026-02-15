@@ -31,6 +31,6 @@ He received his M.S. in Electronic and Communication Engineering from Xidian Uni
 
 ---
 
-<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/siyuanseever/llama2RNN.c">llama2RNN.c</a></p>
-<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/shenzhang2145/ledit">LEDiT</a></p>
-<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/megvii-research/SimpleDG">SimpleDG</a></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/siyuanseever/llama2RNN.c">llama2RNN.c</a> <span class="text-muted"><small>— Block-wise Recurrent Transformer implementations in C</small></span></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/shenzhang2145/ledit">LEDiT</a> <span class="text-muted"><small>— PyTorch Implementation, NeurIPS 2025</small></span></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/megvii-research/SimpleDG">SimpleDG</a> <span class="text-muted"><small>— Training and test code for ECCV2022 workshop NICO challenge</small></span></p>
