@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "世界模型（一）：什么是世界模型？"
-date: 2026-02-15 12:00:00
+date: 2026-02-15 00:00:00
 description: 区分“模拟世界”与“理解世界”，阐述世界模型五大模块的统一可微框架，并讨论空间智能、抽象学习与长期记忆等前沿方向。
 tags: AGI Agent World-Model Memory Perception Prediction RL
 categories: research
