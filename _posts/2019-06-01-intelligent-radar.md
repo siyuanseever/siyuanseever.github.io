@@ -5,6 +5,7 @@ date: 2019-06-01 12:00:00
 description: 深度网络对抗检测模型中雷达智能体能够依靠算法本身的自我学习和改善能力，实现从发射波形到目标检测结果的闭环处理。
 tags: AGI Agent Radar
 categories: research
+series: 世界模型
 thumbnail: assets/img/intelligent_radar_preview.png
 ---
 

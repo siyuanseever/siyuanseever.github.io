@@ -8,9 +8,6 @@ profile:
   align: right
   image: profile.png
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Siyuan Liang (梁思远)</p>
-    <p>Long-context modeling, long-term memory, recurrent architectures</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -32,10 +29,6 @@ Previously, he worked as an algorithm researcher at Megvii in Beijing, deliverin
 
 He received his M.S. in Electronic and Communication Engineering from Xidian University, where his research centered on deep-learning-based radar anti-jamming detection and intelligent electromagnetic games.
 
----
-<h2>pinned repos</h2>
-<div class="row">
-  <div class="col-md-4 mb-3">{% include repository/repo.liquid repository="siyuanseever/llama2RNN.c" %}</div>
-  <div class="col-md-4 mb-3">{% include repository/repo.liquid repository="shenzhang2145/ledit" %}</div>
-  <div class="col-md-4 mb-3">{% include repository/repo.liquid repository="megvii-research/SimpleDG" %}</div>
-</div>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/siyuanseever/llama2RNN.c">llama2RNN.c</a></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/shenzhang2145/ledit">LEDiT</a></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/megvii-research/SimpleDG">SimpleDG</a></p>
