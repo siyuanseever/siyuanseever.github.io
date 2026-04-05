@@ -183,7 +183,7 @@ Marble highlights two deficits of video-centric models:
 
 Spatial intelligence demands an **explicit 3D latent state** that respects physics and remains editable. The AI graduates from *painter* to *demiurge*.
 
-Long-form temporal consistency can also be injected via **long-context memory**, from early ConvLSTM to modern state-space models and my own block-wise recurrent transformer experiments.
+Long-form temporal consistency can also be injected via **long-context memory**, from early ConvLSTM to modern state-space models and my own Truncated Recurrent Transformer experiments.
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">

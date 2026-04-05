@@ -23,7 +23,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Siyuan Liang (梁思远) focuses on long-context modeling and recurrent architectures for sequence models, and proposed the Block-wise Recurrent Transformer (Memory Attention) for strong length extrapolation under train-short, test-long settings.
+Siyuan Liang (梁思远) focuses on long-context modeling and recurrent architectures for sequence models, and proposed the Truncated Recurrent Transformer for strong length extrapolation under train-short, test-long settings.
 
 Previously, he worked as an algorithm researcher at Megvii in Beijing, delivering production algorithms for fingerprint and face liveness, display demura, and XR hand tracking.
 
@@ -31,6 +31,6 @@ He received his M.S. in Electronic and Communication Engineering from Xidian Uni
 
 ---
 
-<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/siyuanseever/llama2RNN.c">llama2RNN.c</a> <span class="text-muted"><small>— Block-wise Recurrent Transformer implementations in C</small></span></p>
+<p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/siyuanseever/llama2RNN.c">llama2RNN.c</a> <span class="text-muted"><small>— Truncated Recurrent Transformer implementations in C</small></span></p>
 <p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/shenzhang2145/ledit">LEDiT</a> <span class="text-muted"><small>— PyTorch Implementation, NeurIPS 2025</small></span></p>
 <p><i class="fa-brands fa-github gh-icon"></i> <a href="https://github.com/megvii-research/SimpleDG">SimpleDG</a> <span class="text-muted"><small>— Training and test code for ECCV2022 workshop NICO challenge</small></span></p>

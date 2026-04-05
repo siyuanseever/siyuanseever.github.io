@@ -60,7 +60,7 @@ $$
   </div>
 </div>
 <div class="caption">
-  记忆注意力（Memory Attention）
+  Truncated Recurrent Transformer
 </div>
 
 ### 感知功能
@@ -202,7 +202,7 @@ World Labs 推出的首款产品 **Marble**，展示了空间智能与普通视�
   长时序状态空间视频世界模型
 </div>
 
-当然“生成视频”的路子也有解决思路，那就是引入**长期记忆**，从早期的 ConvLSTM，到最新的 State-Space Model，甚至我之前设计的 Block-wise Recurrent Transformer 都是要做这样的时序一致性推理。
+当然“生成视频”的路子也有解决思路，那就是引入**长期记忆**，从早期的 ConvLSTM，到最新的 State-Space Model，甚至我之前设计的 Truncated Recurrent Transformer 都是要做这样的时序一致性推理。
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
