@@ -12,3 +12,18 @@ node_modules/
 vendor
 .idea
 .venv
+
+# Common local caches and logs
+*.log
+.cache/
+.pytest_cache/
+
+# Browser test artifacts and screenshots
+output/
+playwright-report/
+test-results/
+coverage/
+
+# Local build artifacts
+dist/
+build/
