@@ -30,7 +30,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-世界模型-二-智能电磁博弈",
+        },{id: "post-从-test-time-memory-到-test-time-abstraction-读-titans-后的一些思考",
+        
+          title: "从 Test-Time Memory 到 Test-Time Abstraction：读 Titans 后的一些思考",
+        
+        description: "以 Titans 的 test-time memory 机制为起点，讨论长期记忆问题的关键是否应从精确检索（exact association）转向从历史中形成可复用抽象（test-time abstraction），并给出若干架构层面的分析与研究设想。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/titans-test-time-abstraction/";
+          
+        },
+      },{id: "post-from-test-time-memory-to-test-time-abstraction-some-thoughts-after-reading-titans",
+        
+          title: "From Test-Time Memory to Test-Time Abstraction: Some Thoughts After Reading Titans",
+        
+        description: "Starting from the test-time memory mechanism in Titans, I ask whether the crux of long-term memory should shift from exact association toward forming reusable abstractions from history (test-time abstraction), and sketch a few architectural analyses and research hypotheses.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/titans-test-time-abstraction-en/";
+          
+        },
+      },{id: "post-世界模型-二-智能电磁博弈",
         
           title: "世界模型（二）：智能电磁博弈",
         
