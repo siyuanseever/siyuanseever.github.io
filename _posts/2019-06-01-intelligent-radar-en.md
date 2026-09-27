@@ -21,6 +21,7 @@ Here, we will address another problem of the anti-jamming detection network: gen
 ## Joint Optimization of Jamming, Detection, and Generation
 
 ### Detection, Denoising, and Recovery Network for Radar Signals Received by Jammer
+
 When the jammer receives a radar signal, it has two main tasks: detection of the radar signal and waveform recovery. The performance of its detection network and traditional detection theory can be found in reference [37]. We (in the thesis above) verified that the network performance approaches the theoretical value of optimal detection. Below, we mainly introduce the recovery network of the jammer for the received radar signal. We establish the following cost function, where the echo is:
 
 $$
@@ -42,13 +43,13 @@ $$
 The Generative Adversarial Network (GAN) loss is:
 
 $$
-L_{GAN}=\log(1-D(S|X))+\log(D(G(X)|X)) 
+L_{GAN}=\log(1-D(S|X))+\log(D(G(X)|X))
 $$
 
 The final optimization function for training the jamming network is:
 
 $$
-\min_G \max_D C_{MSE} L_{MSE}+C_{PC} L_{PC}+C_{GAN} L_{GAN} 
+\min_G \max_D C_{MSE} L_{MSE}+C_{PC} L_{PC}+C_{GAN} L_{GAN}
 $$
 
 <div class="row mt-3">
@@ -150,6 +151,7 @@ By directly maximizing the detection result to optimize the transmit waveform, w
 </div>
 
 ## Superposition of Long-Term Memory, Evaluation, and Strategy
+
 ### Multi-Pulse Joint Anti-Jamming Detection Network
 
 Previous radar detections were all single-pulse detections, but in more cases, targets need multiple pulses to be detected, such as moving targets in static clutter environments. At this time, the problem of multi-pulse joint detection emerges.
@@ -237,7 +239,7 @@ $$
 The value network is an estimation function for future rewards. It directly evaluates future rewards only through current observation information, without needing to actually give the detection reward value for every future moment. Where the transmit waveform at the current moment is given by the policy network, i.e., $S_t=\pi(o_{t-1})$, and $R_t$ can be calculated from the detection result of the detection network, i.e., $R_t=-L(P(Y_t|o_t ),D(o_t ))$. We use the value on the right side of the Bellman equation to continuously correct the evaluation network on the left side until the equation holds approximately, i.e.:
 
 $$
-\min_V {ValueLoss} = \min_{V_{new}} [V_{new}(o_t) - [R_t+V_{old}(o_{t+1})]]^2 
+\min_V {ValueLoss} = \min_{V_{new}} [V_{new}(o_t) - [R_t+V_{old}(o_{t+1})]]^2
 $$
 
 Finally, optimize the transmit waveform strategy at the current moment by maximizing the future rewards evaluated by the value network:
@@ -250,11 +252,11 @@ Continuously alternate updating the value network and the policy network to comp
 
 In fact, the entire optimization process utilizes Reinforcement Learning [45] methods, specifically as follows:
 
-* View the radar side as an agent.
-* Use the echo or jamming data received by the radar as the agent's observation information of the environment: $o$.
-* View the radar's transmit waveform as the agent's action. The agent takes action based on different observation information according to the policy function: $S_t=\pi(o_{t-1})$.
-* View the radar's detection of targets in the environment: $D(o_t)$ as the agent's perception of the environment. (The value network $V(o_t)$ mentioned above, which evaluates future rewards based on observation information, also belongs to environment perception. Therefore, when specifically building the detection network and value network, low-level convolutional parameters can be shared. At the same time, the policy network $\pi(o_{t-1})$ also obtains actions by analyzing observation information, so these parameters can also be shared.)
-* View the detection effect of the radar detection network as the immediate reward for the agent's action: $R$.
+- View the radar side as an agent.
+- Use the echo or jamming data received by the radar as the agent's observation information of the environment: $o$.
+- View the radar's transmit waveform as the agent's action. The agent takes action based on different observation information according to the policy function: $S_t=\pi(o_{t-1})$.
+- View the radar's detection of targets in the environment: $D(o_t)$ as the agent's perception of the environment. (The value network $V(o_t)$ mentioned above, which evaluates future rewards based on observation information, also belongs to environment perception. Therefore, when specifically building the detection network and value network, low-level convolutional parameters can be shared. At the same time, the policy network $\pi(o_{t-1})$ also obtains actions by analyzing observation information, so these parameters can also be shared.)
+- View the detection effect of the radar detection network as the immediate reward for the agent's action: $R$.
 
 The above idea is shown in the figure below. In the process of interaction with the environment, detection, value evaluation, and strategy selection are performed through the same multi-layer Conv-LSTM network, and network parameters are updated in reverse using various optimization objectives. Ultimately, using only one network, we complete anti-jamming detection of targets, evaluation of long-term detection rewards, and optimization of transmit waveforms based on maximizing long-term detection rewards. The above ideas can be seen in literature [46] [47].
 
@@ -266,7 +268,6 @@ The above idea is shown in the figure below. In the process of interaction with 
 <div class="caption">
     Training of Detection Network and Evaluation Network
 </div>
-
 
 In reality, backpropagation of gradients is not as simple as described in the figure above. Its true forward and backward propagation is shown in the figure below. Among them, the optimization of the detection network $D$ only needs to use the current detection loss; the optimization of the value network $V$ requires using the current evaluation error, and calculating the evaluation error requires not only the current detection loss but also the evaluation value of the next moment and the evaluation value of the current moment.
 
@@ -360,16 +361,16 @@ For the optimization of the value network, one can choose either a model-based m
     Deep Network Adversarial Detection of Radar and Jamming on Continuous Pulses
 </div>
 
-* An anti-jamming detection network that can be used for multi-pulse joint detection, which can make optimal anti-jamming detection for arbitrary jamming forms.
-* A value network that can be used to evaluate detection effects, which will make long-term effect evaluations of anti-jamming detection based on the jammer's jamming capability.
-* A policy network for transmit waveforms that can be used for multi-pulse joint anti-jamming detection, which will give the optimal transmit waveform for anti-jamming target detection based on the environmental jamming and target information already mastered.
-* A jamming generation network that can be used for multi-pulse joint detection, which will give optimal jamming for future detection rewards targeting multi-pulse coherent detection based on the received transmit waveforms.
+- An anti-jamming detection network that can be used for multi-pulse joint detection, which can make optimal anti-jamming detection for arbitrary jamming forms.
+- A value network that can be used to evaluate detection effects, which will make long-term effect evaluations of anti-jamming detection based on the jammer's jamming capability.
+- A policy network for transmit waveforms that can be used for multi-pulse joint anti-jamming detection, which will give the optimal transmit waveform for anti-jamming target detection based on the environmental jamming and target information already mastered.
+- A jamming generation network that can be used for multi-pulse joint detection, which will give optimal jamming for future detection rewards targeting multi-pulse coherent detection based on the received transmit waveforms.
 
 Regarding the elaboration and understanding of the intelligent electromagnetic game, compared with the cognitive radar mentioned in the introduction, the deep network adversarial detection model can achieve the following points:
 
-* Leverage deep learning to achieve intelligent information perception of targets and the environment.
-* Leverage deep reinforcement learning to achieve closed-loop optimization processing from transmit waveform to target detection.
-* Leverage recurrent neural networks to achieve the memory function of the radar agent.
+- Leverage deep learning to achieve intelligent information perception of targets and the environment.
+- Leverage deep reinforcement learning to achieve closed-loop optimization processing from transmit waveform to target detection.
+- Leverage recurrent neural networks to achieve the memory function of the radar agent.
 
 In the deep network adversarial detection model, the radar agent can rely on the algorithm's self-learning and improvement capabilities to achieve closed-loop processing from transmit waveform to target detection results. Relying on the final detection result to improve the radar's working mode and processing process end-to-end, its scope of use is wider and optimization is more integrated. In a stable environment, it will continuously iterate and update; while in an unknown or changing environment, the intelligent radar can also adapt quickly during interaction with the environment. Compared with traditional radar technology which mostly uses preset working modes and reception processing methods, the radar agent in the deep network adversarial detection model forms a closed loop from reception to transmission. It can more actively perceive external environmental information and perform cognitive transmission and cognitive reception processing based on this prior information. In the continuous adversarial training with jamming, it can simultaneously improve the performance of both radar and jamming.
 
@@ -385,9 +386,9 @@ When I now—a person who has been working in the workplace for six years—look
 
 ## References
 
-* [37] Mark A Richards. Fundamentals of Radar Signal Processing [M]. 2008.
-* [30] Bacon P, Harb J, Precup D, et al. The Option-Critic Architecture[J]. arXiv: Artificial Intelligence, 2016.
-* [46] Tang Y, Tian Y, Lu J, et al. Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition[C]. computer vision and pattern recognition, 2018: 5323-5332.
-* [47] L. Kang, J. Bo, L. Hongwei and L. Siyuan. Reinforcement Learning based Anti-jamming Frequency Hopping Strategies Design for Cognitive Radar[C]. 2018 IEEE International Conference on Signal Processing, Communications and Computing (ICSPCC). Qingdao. 2018, pp. 1-5.
-* [48] Wang J X, Kurthnelson Z, Tirumala D, et al. Learning to reinforcement learn[J]. Cognitive Science, 2016.
-* [49] Bengio Y, Courville A C, Vincent P, et al. Representation Learning: A Review and New Perspectives[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013, 35(8): 1798-1828.
+- [37] Mark A Richards. Fundamentals of Radar Signal Processing [M]. 2008.
+- [30] Bacon P, Harb J, Precup D, et al. The Option-Critic Architecture[J]. arXiv: Artificial Intelligence, 2016.
+- [46] Tang Y, Tian Y, Lu J, et al. Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition[C]. computer vision and pattern recognition, 2018: 5323-5332.
+- [47] L. Kang, J. Bo, L. Hongwei and L. Siyuan. Reinforcement Learning based Anti-jamming Frequency Hopping Strategies Design for Cognitive Radar[C]. 2018 IEEE International Conference on Signal Processing, Communications and Computing (ICSPCC). Qingdao. 2018, pp. 1-5.
+- [48] Wang J X, Kurthnelson Z, Tirumala D, et al. Learning to reinforcement learn[J]. Cognitive Science, 2016.
+- [49] Bengio Y, Courville A C, Vincent P, et al. Representation Learning: A Review and New Perspectives[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013, 35(8): 1798-1828.

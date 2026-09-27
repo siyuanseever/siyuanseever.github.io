@@ -7,7 +7,7 @@ first_name: Siyuan
 middle_name: ""
 last_name: Liang
 contact_note: > # You can even add a little note about which of these is the best way to reach you.
-  Best by email. 
+  Best by email.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Researcher focused on algorithms and engineering.
 footer_text: >
@@ -130,7 +130,6 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 # Optional: Set default categories and tags for posts from each source.
-
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -626,4 +625,3 @@ third_party_libraries:
       css: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.css"
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
-

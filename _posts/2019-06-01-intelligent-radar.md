@@ -22,6 +22,7 @@ thumbnail: assets/img/intelligent_radar_preview.png
 ## 干扰、检测、生成的联合优化
 
 ### 干扰接收的雷达信号的检测降噪及恢复网络
+
 当干扰机接收到雷达信号时，首先有两个主要工作：对雷达信号的检测和波形恢复。关于其检测网络的性能及传统检测理论可见文献[37]，我们（在上面的论文中）验证了网络性能逼近于最优检测的理论值，下面主要介绍干扰机对接收的雷达信号的恢复网络。我们建立如下的代价函数，其中回波为
 
 $$
@@ -43,13 +44,13 @@ $$
 生成对抗网络损失为
 
 $$
-L_{GAN}=\log(1-D(S|X))+\log(D(G(X)|X)) 
+L_{GAN}=\log(1-D(S|X))+\log(D(G(X)|X))
 $$
 
 最终训练干扰网络的优化函数为
 
 $$
-\min_G \max_D C_{MSE} L_{MSE}+C_{PC} L_{PC}+C_{GAN} L_{GAN} 
+\min_G \max_D C_{MSE} L_{MSE}+C_{PC} L_{PC}+C_{GAN} L_{GAN}
 $$
 
 <div class="row mt-3">
@@ -151,6 +152,7 @@ $$
 </div>
 
 ## 长期记忆、评估、策略的叠加
+
 ### 多脉冲联合抗干扰检测网络
 
 之前的雷达检测都是单脉冲的检测，而更多情况下目标需要多个脉冲才能被检测出来，如静态杂波环境中的运动目标。此时，关于多脉冲联合检测的问题便显露出来。
@@ -238,7 +240,7 @@ $$
 价值网络是一个对未来回报的估计函数，它仅通过当前观测信息直接评估未来回报，而不需要实际给出未来每一时刻的检测回报值。其中当前时刻的发射波形由策略网络给出，即 $S_t=\pi(o_{t-1})$，而 $R_t$ 则可以由检测网络的检测结果计算得到，即 $R_t=-L(P(Y_t|o_t ),D(o_t ))$。我们用 Bellman 方程的右边的值来不断修正左侧的评估网络，直至等式近似成立，即：
 
 $$
-\min_V {ValueLoss} = \min_{V_{new}} [V_{new}(o_t) - [R_t+V_{old}(o_{t+1})]]^2 
+\min_V {ValueLoss} = \min_{V_{new}} [V_{new}(o_t) - [R_t+V_{old}(o_{t+1})]]^2
 $$
 
 最后再通过最大化价值网络评估的未来回报来优化当前时刻的发射波形策略：
@@ -251,11 +253,11 @@ $$
 
 实际上整个优化过程是利用了强化学习[45]的方法，具体如下：
 
-* 将雷达端看做一个智能体（agent）。
-* 将雷达接收的回波或干扰数据作为智能体对环境的观测信息（observation）：$o$。
-* 将雷达的发射波形看做智能体的行动（action），智能体依据策略（policy）函数，根据不同的观测信息采取行动：$S_t=\pi(o_{t-1})$。
-* 雷达对环境中目标的检测（detection）：$D(o_t)$ 看做智能体对环境的感知（上文提到的根据观测信息对未来回报进行评估的价值（value）网络：$V(o_t)$ 也属于环境感知，所以在具体构建检测网络和价值网络时可以共享低层的卷积参数，同时策略网络 $\pi(o_{t-1})$ 也是通过分析观测信息才获得的行动，所以也可以共享这些参数。）
-* 将雷达检测网络的检测效果看做智能体行动的立即回报奖励（reward）：$R$。
+- 将雷达端看做一个智能体（agent）。
+- 将雷达接收的回波或干扰数据作为智能体对环境的观测信息（observation）：$o$。
+- 将雷达的发射波形看做智能体的行动（action），智能体依据策略（policy）函数，根据不同的观测信息采取行动：$S_t=\pi(o_{t-1})$。
+- 雷达对环境中目标的检测（detection）：$D(o_t)$ 看做智能体对环境的感知（上文提到的根据观测信息对未来回报进行评估的价值（value）网络：$V(o_t)$ 也属于环境感知，所以在具体构建检测网络和价值网络时可以共享低层的卷积参数，同时策略网络 $\pi(o_{t-1})$ 也是通过分析观测信息才获得的行动，所以也可以共享这些参数。）
+- 将雷达检测网络的检测效果看做智能体行动的立即回报奖励（reward）：$R$。
 
 上述想法如下图所示，在于环境的交互过程中，通过同一个多层的 Conv-LSTM 网络进行检测、价值评估及策略选择，并利用各种优化目标反向更新网络参数，最终，我们仅利用一个网络，便完成了包括目标的抗干扰检测、长期检测回报的评估以及基于最大化长期检测回报优化得到的发射波形。上述想法在文献 [46] [47] 中可以看到。
 
@@ -267,7 +269,6 @@ $$
 <div class="caption">
     检测网络和评估网络的训练
 </div>
-
 
 实际上，反向梯度传播并没有上图中描述的那么简单，其真正的前向和反向传播如下图所示。其中，对检测网络 $D$ 的优化仅需要利用当前的检测损失就可以了；对价值网络 $V$ 的优化，则需要利用当前的评估误差，而计算评估误差不仅需要当前的检测损失，还需要下一时刻的评估价值以及当前时刻的评估价值。
 
@@ -361,16 +362,16 @@ $$
     雷达与干扰在连续脉冲上的深度网络对抗检测
 </div>
 
-* 一个可以用于多脉冲联合的抗干扰检测网络，该网络可以针对任意的干扰形式作出最优的抗干扰检测。
-* 一个可以用于评估检测效果的价值网络，该网络会根据干扰方的干扰能力作出抗干扰检测的长期效果评估。
-* 一个可以用于多脉冲联合的抗干扰检测的发射波形的策略网络，该网络会根据已经掌握的环境干扰和目标信息，给出最优的抗干扰目标检测的发射波形。
-* 一个可以用于多脉冲联合检测的干扰生成网络，该网络会根据接收到的发射波形针对多脉冲相参检测对未来检测回报给出最优的干扰。
+- 一个可以用于多脉冲联合的抗干扰检测网络，该网络可以针对任意的干扰形式作出最优的抗干扰检测。
+- 一个可以用于评估检测效果的价值网络，该网络会根据干扰方的干扰能力作出抗干扰检测的长期效果评估。
+- 一个可以用于多脉冲联合的抗干扰检测的发射波形的策略网络，该网络会根据已经掌握的环境干扰和目标信息，给出最优的抗干扰目标检测的发射波形。
+- 一个可以用于多脉冲联合检测的干扰生成网络，该网络会根据接收到的发射波形针对多脉冲相参检测对未来检测回报给出最优的干扰。
 
 关于对智能电磁博弈的阐述和理解，与绪论中提到的认知雷达相比，深度网络对抗检测模型可以做到以下几点：
 
-* 借助深度学习，实现对目标和环境的智能化信息感知。
-* 借助深度强化学习，实现从发射波形到目标检测的闭环优化处理。
-* 借助循环神经网络，实现雷达智能体的记忆功能。
+- 借助深度学习，实现对目标和环境的智能化信息感知。
+- 借助深度强化学习，实现从发射波形到目标检测的闭环优化处理。
+- 借助循环神经网络，实现雷达智能体的记忆功能。
 
 深度网络对抗检测模型中雷达智能体能够依靠算法本身的自我学习和改善能力，实现从发射波形到目标检测结果的闭环处理，依靠最终检测结果端到端地改善雷达的工作方式和处理过程，其使用范围更广，优化更加一体化。在平稳的环境下其会不断地迭代更新；而在未知或变化的环境中，智能化雷达也能够在与环境的交互中快速适应。相比于传统雷达技术多采用预设的工作模式和接收处理方式，深度网络对抗检测模型中雷达智能体形成了从接收到发射的闭环，可以更加主动的感知外部环境信息，并基于这些先验信息进行认知发射和认知接收处理，在与干扰的不断对抗训练中，能够同时改善雷达与干扰的性能。
 
@@ -386,9 +387,9 @@ $$
 
 ## 文献
 
-* [37] Mark A Richards. 雷达信号处理基础[M]. 2008.
-* [30] Bacon P, Harb J, Precup D, et al. The Option-Critic Architecture[J]. arXiv: Artificial Intelligence, 2016.
-* [46] Tang Y, Tian Y, Lu J, et al. Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition[C]. computer vision and pattern recognition, 2018: 5323-5332.
-* [47] L. Kang, J. Bo, L. Hongwei and L. Siyuan. Reinforcement Learning based Anti-jamming Frequency Hopping Strategies Design for Cognitive Radar[C]. 2018 IEEE International Conference on Signal Processing, Communications and Computing (ICSPCC). Qingdao. 2018, pp. 1-5.
-* [48] Wang J X, Kurthnelson Z, Tirumala D, et al. Learning to reinforcement learn[J]. Cognitive Science, 2016.
-* [49] Bengio Y, Courville A C, Vincent P, et al. Representation Learning: A Review and New Perspectives[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013, 35(8): 1798-1828.
+- [37] Mark A Richards. 雷达信号处理基础[M]. 2008.
+- [30] Bacon P, Harb J, Precup D, et al. The Option-Critic Architecture[J]. arXiv: Artificial Intelligence, 2016.
+- [46] Tang Y, Tian Y, Lu J, et al. Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition[C]. computer vision and pattern recognition, 2018: 5323-5332.
+- [47] L. Kang, J. Bo, L. Hongwei and L. Siyuan. Reinforcement Learning based Anti-jamming Frequency Hopping Strategies Design for Cognitive Radar[C]. 2018 IEEE International Conference on Signal Processing, Communications and Computing (ICSPCC). Qingdao. 2018, pp. 1-5.
+- [48] Wang J X, Kurthnelson Z, Tirumala D, et al. Learning to reinforcement learn[J]. Cognitive Science, 2016.
+- [49] Bengio Y, Courville A C, Vincent P, et al. Representation Learning: A Review and New Perspectives[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013, 35(8): 1798-1828.

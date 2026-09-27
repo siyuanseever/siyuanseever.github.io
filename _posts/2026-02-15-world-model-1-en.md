@@ -12,7 +12,7 @@ thumbnail: assets/img/intelligent_radar_preview.png
 
 > First drafted in April 2019 for my M.S. thesis on intelligent radar; revived in Jan 2026 with new insights from LLMs and spatial intelligence. May this note serve fellow travellers on the road to AGI.
 
-Before diving in, let us distinguish two concepts: **simulating the world** and **understanding the world**. Modern video-generative models (e.g. Sora, MovieGen) excel at pixel-level *simulation*, yet do they *understand* the underlying physics and causality? Borrowing the metaphor of a “unified field theory” from physics, I define a **World Model** as a **differentiable, end-to-end framework** that tightly couples five functions—**memory, perception, prediction, evaluation, and decision**—into a single, learnable closed loop. The goal is not merely photorealistic frames, but a reasoning, interactive *mind*.
+Before diving in, let us distinguish two concepts: **simulating the world** and **understanding the world**. Modern video-generative models (e.g. Sora, MovieGen) excel at pixel-level _simulation_, yet do they _understand_ the underlying physics and causality? Borrowing the metaphor of a “unified field theory” from physics, I define a **World Model** as a **differentiable, end-to-end framework** that tightly couples five functions—**memory, perception, prediction, evaluation, and decision**—into a single, learnable closed loop. The goal is not merely photorealistic frames, but a reasoning, interactive _mind_.
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
@@ -34,6 +34,7 @@ Below I detail each module and show how to weave them together “organically”
 ## Five Functional Modules
 
 An agent should implement the following:
+
 - **Memory** – temporal, causal memory
 - **Perception** – compressive representation
 - **Prediction** – next-state forecasting
@@ -116,7 +117,7 @@ The system couples a multi-modal auto-regressive control network with a VAE-GAN 
 
 ### B. Next-State Prediction instead of Next-Token Prediction
 
-If LLMs push *next-token* prediction to the extreme, **next-state** prediction couples forecasting with perception for data-efficient learning on high-bandwidth modalities such as video.
+If LLMs push _next-token_ prediction to the extreme, **next-state** prediction couples forecasting with perception for data-efficient learning on high-bandwidth modalities such as video.
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
@@ -128,6 +129,7 @@ If LLMs push *next-token* prediction to the extreme, **next-state** prediction c
 </div>
 
 Key references:
+
 - Joint Embedding Predictive Architecture (JEPA)
 - Emu3.5
 
@@ -135,7 +137,7 @@ LeCun’s roadmap to autonomous machine intelligence resonates strongly with thi
 
 ### C. V-JEPA 2-AC: Self-supervised Video Understanding & Planning
 
-V-JEPA 2-AC adds **action conditioning** to perception and prediction. Although it does not emit *actions* directly (evaluation + RL are still needed), it learns to imitate state-action transitions observed in the training videos.
+V-JEPA 2-AC adds **action conditioning** to perception and prediction. Although it does not emit _actions_ directly (evaluation + RL are still needed), it learns to imitate state-action transitions observed in the training videos.
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
@@ -161,6 +163,7 @@ Even pre-vertebrate animals without language rely on vision to grasp physics (gr
 > Building frontier models that can **perceive, generate, reason, and interact** with the 3D world.
 
 This aligns one-to-one with our five-module taxonomy:
+
 - **Perceive** – 3D structure understanding
 - **Generate** – imagine future states
 - **Reason** – causal inference (evaluation + memory)
@@ -178,10 +181,11 @@ This aligns one-to-one with our five-module taxonomy:
 </div>
 
 Marble highlights two deficits of video-centric models:
+
 - **Spatial inconsistency** – objects drift or vanish; perspective violates physics.
 - **Ephemerality** – pixels disappear; no persistent 3D substrate.
 
-Spatial intelligence demands an **explicit 3D latent state** that respects physics and remains editable. The AI graduates from *painter* to *demiurge*.
+Spatial intelligence demands an **explicit 3D latent state** that respects physics and remains editable. The AI graduates from _painter_ to _demiurge_.
 
 Long-form temporal consistency can also be injected via **long-context memory**, from early ConvLSTM to modern state-space models and my own Truncated Recurrent Transformer experiments.
 
@@ -207,15 +211,15 @@ Long-form temporal consistency can also be injected via **long-context memory**,
 
 World models diverge from mainstream deep learning in **data efficiency** and **adaptation**.
 
-1. **Abstract Learning** – physicians read MRI scans by *concepts*, not pixels; future AI must exploit spatial commonsense.
+1. **Abstract Learning** – physicians read MRI scans by _concepts_, not pixels; future AI must exploit spatial commonsense.
 2. **Continual Learning** – we should target an **evolving intelligence** that adapts lifelong, rather than a frozen AGI that ships once.
-3. **Temporal Awareness** – time is the only unquestionable physical quantity. Any serious model (CNN or Transformer) will eventually re-acquire an **RNN backbone**; without it, entropy and causality remain invisible, precluding true *silicon life*.
+3. **Temporal Awareness** – time is the only unquestionable physical quantity. Any serious model (CNN or Transformer) will eventually re-acquire an **RNN backbone**; without it, entropy and causality remain invisible, precluding true _silicon life_.
 
-Recurrent inductive biases endow models with **long-term, causal memory**, solving length extrapolation *and* letting AI accumulate experience across training steps instead of being *reformatted* after every restart.
+Recurrent inductive biases endow models with **long-term, causal memory**, solving length extrapolation _and_ letting AI accumulate experience across training steps instead of being _reformatted_ after every restart.
 
 ## Case Study: Intelligent Electromagnetic Game
 
-To show that the framework is *not* limited to video games, I apply it to **radar–jammer adversarial signalling**—a decidedly *hardcore* domain.
+To show that the framework is _not_ limited to video games, I apply it to **radar–jammer adversarial signalling**—a decidedly _hardcore_ domain.
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
@@ -227,8 +231,9 @@ To show that the framework is *not* limited to video games, I apply it to **rada
 </div>
 
 My M.S. thesis built a **deep-RL radar agent** implementing the full loop:
+
 1. **Perception + Memory** – Conv-LSTM ingests pulse echoes, retaining long-term memory of earlier pulses.
-2. **Decision** – a policy network $\pi(o_{t-1})$ *generates* the next transmit waveform instead of using a fixed template.
+2. **Decision** – a policy network $\pi(o_{t-1})$ _generates_ the next transmit waveform instead of using a fixed template.
 3. **Evaluation** – a value network $V(o_t)$ predicts the long-term detection return of the chosen waveform under future jamming.
 4. **World** – radar and jammer co-train in a **fully differentiable** adversarial channel.
 
@@ -242,5 +247,6 @@ History offers a constellation of ideas—RL, meta-learning, self-supervised pre
 
 ---
 
-Series Navigation  
+Series Navigation
+
 - Next: [World Models (II): Intelligent Electromagnetic Game]({% post_url 2019-06-01-intelligent-radar %})

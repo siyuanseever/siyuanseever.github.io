@@ -34,6 +34,7 @@ thumbnail: assets/img/intelligent_radar_preview.png
 ## 多种功能的具体介绍
 
 首先我们对智能体给出这样的描述，智能体应该拥有如下几个功能：
+
 - 记忆功能
 - 感知功能
 - 预测功能
@@ -138,6 +139,7 @@ $$
 </div>
 
 这个构想非常简单直接，就是结合自编码器的感知能力和自回归模型的预测能力，所以有很多相似的想法可以参考：
+
 - Joint Embedding Predictive Architecture（JEPA）
 - Emu3.5（我都想入职了：）
 
@@ -161,16 +163,21 @@ by the way, 感觉自己很多思路和出发点都能在 LeCun 老爷子的世�
 斯坦福李飞飞教授团队（World Labs）最近提出的**空间智能 (Spatial Intelligence)** 概念，为世界模型提供了一个极佳的落地场景。
 
 ### 1. 视觉 > 语言？
+
 李飞飞教授指出，相比于语言，**视觉（Vision）** 是更为基础的生物本能。
+
 > Perception and action became the core loop driving the evolution of intelligence.
 
 从寒武纪大爆发开始，**“感知-行动”** 的循环就是推动智能进化的核心动力。没有语言的动物依然可以通过视觉理解物理世界的规则（如重力、空间遮挡）并做出决策。因此，构建 AGI 的下一步，不应仅仅局限于 LLM 的文本逻辑，更需要让 AI 拥有**“空间认知”** 能力。
 
 ### 2. 核心定义
+
 她定义的空间智能模型需要具备：
+
 > building frontier models that can perceive, generate, reason, and interact with the 3D world.
 
 这与我上述的“五位一体”定义不谋而合：
+
 - **Perceive (感知)**：理解 3D 空间结构。
 - **Generate (预测/生成)**：想象未来的可能性。
 - **Reason (评估/记忆)**：进行因果推理。
@@ -188,6 +195,7 @@ by the way, 感觉自己很多思路和出发点都能在 LeCun 老爷子的世�
 </div>
 
 World Labs 推出的首款产品 **Marble**，展示了空间智能与普通视频生成的关键区别：
+
 - **空间一致性 (Spatial Consistency)**：Sora 等视频生成模型往往存在“空间崩坏”的问题（如人走着走着消失了，或者透视关系错误）。而空间智能要求模型内部有一个显式的、符合物理规律的 3D 表达（Hidden State）。
 - **持久性 (Persistence)**：生成的不是稍纵即逝的像素帧，而是一个可以被存储、编辑、反复进入的**持久化 3D 世界**。
 
@@ -220,7 +228,7 @@ World Labs 推出的首款产品 **Marble**，展示了空间智能与普通视�
 世界模型与传统深度学习系统的一个显著区别在于**学习路径**。现有的深度学习（DL）效率极低，依赖海量标注数据（Supervised Learning）或试错（RL）。未来十年，AI 的学习方式可能有一些本质的改变：
 
 1. **抽象学习（Abstract Learning）**：像人类医生看 MRI 影像一样，AI 将学会利用“空间常识”和“抽象概念”进行学习，而非死记硬背像素点或者下一个单词。
-2. **持续学习（Continual Learning）**：**从“通用”到“进化”**：我们不应追求一个出厂即巅峰的 AGI，而应追求像人类一样能不断适应环境、持续进化的 **Evolving Intelligence**。  
+2. **持续学习（Continual Learning）**：**从“通用”到“进化”**：我们不应追求一个出厂即巅峰的 AGI，而应追求像人类一样能不断适应环境、持续进化的 **Evolving Intelligence**。
 3. **时间感知**：现实世界中，时间的流逝是唯一的物理真理。未来的模型（无论是 CNN 还是 Transformer）最终都要加上类似 **LSTM 的 RNN 体质**。如果模型无法从结构上感知到时间，就无法理解熵增与因果，也就无法诞生真正的“硅基生命”。
 
 通过 RNN 类的架构，模型将具备**时序因果的长期记忆**。这不仅能解决“长度外推”问题，更能让 AI 在物理世界的单向时间流中，通过持续的 Training Step 和状态保留，像生物一样积累经验，而非每次重启都被“格式化”。
@@ -257,5 +265,6 @@ World Labs 推出的首款产品 **Marble**，展示了空间智能与普通视�
 
 ---
 
-系列导航  
+系列导航
+
 - 下一篇：[世界模型（二）：智能电磁博弈]({% post_url 2019-06-01-intelligent-radar %})
